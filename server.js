@@ -5,6 +5,8 @@ const router = express.Router();
 // YA VIENE CON EXPRESS INCLUIDO :D
 //const bodyParser = require('body-parser');
 
+// Creamos un módulo para las respuestas
+const response = require('./network/response');
 
 
 
@@ -26,7 +28,14 @@ router.get('/message', function (req,res) {
     res.header({
         "custom-header" : "Nuestro valor personalizado"
     });
-    res.send('Lista de mensajes');
+    // res.send('Lista de mensajes');
+
+
+
+
+
+    // Respuestas personalizadas del móódulo response
+    response.success(req,res, 'Lista de mensajes');
 });
 
 router.post('/message', function (req,res) {
@@ -35,7 +44,17 @@ router.post('/message', function (req,res) {
     //res.send('Mensaje ' + req.body.mensaje /* mensaje = nombre del valor en url-encoded */ + ' añadido');
 
     // Podemos devolver los estados mediantes estatus, así hacer que todo sea más estructurado
-    res.status(201).send({error: '', 'body': 'Creado correctamente'});
+    //res.status(201).send({error: '', 'body': 'Creado correctamente'});
+
+
+
+    if(req.query.error == "ok") {
+        response.error(req,res, 'Error simulado', '400');    
+    }
+    else {
+    // Respuestas personalizadas del móódulo response
+        response.success(req,res, 'Creado correctamente', '201');
+    }
 
 });
 
