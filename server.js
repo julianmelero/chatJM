@@ -32,7 +32,10 @@ router.get('/message', function (req,res) {
 router.post('/message', function (req,res) {
     console.log(req.body);
     console.log(req.query);
-    res.send('Mensaje ' + req.body.mensaje /* mensaje = nombre del valor en url-encoded */ + ' añadido');
+    //res.send('Mensaje ' + req.body.mensaje /* mensaje = nombre del valor en url-encoded */ + ' añadido');
+
+    // Podemos devolver los estados mediantes estatus, así hacer que todo sea más estructurado
+    res.status(201).send({error: '', 'body': 'Creado correctamente'});
 
 });
 
