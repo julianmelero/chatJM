@@ -18,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded( { extended: true }));
 //Ponemos el Router el último, ya que si no, no funciona el BodyParser
 app.use(router);
+app.use('/app', express.static('public'));
 
 
 // Aplicamos Rutas con sus métodos
