@@ -4,17 +4,16 @@
   "description": "Chat as Telegram",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start" : "nodemon server.js"
   },
   "keywords": [
     "chat",
     "telegram",
     "server"
   ],
-  "author": "Julián Melero <jmelerohidalgo@gmail.com>",
+  "author": "Julián Melero <julian@melerohidalgo.es>",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "express": "^4.17.1"
   }
 }

@@ -19,7 +19,13 @@ app.use(router);
 
 
 // Aplicamos Rutas con sus métodos
-router.get('/', function (req,res) {    
+router.get('/message', function (req,res) {    
+    // Leer cabeceras
+    console.log(req.headers);
+    // Insertamos un valor en el header
+    res.header({
+        "custom-header" : "Nuestro valor personalizado"
+    });
     res.send('Lista de mensajes');
 });
 
