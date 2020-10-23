@@ -1,4 +1,4 @@
-const express = require('express');
+// const express = require('express');
 const message = require('../Components/message/network')
 
 // Función que añade todas las rutas
