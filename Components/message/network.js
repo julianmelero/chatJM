@@ -13,19 +13,28 @@ const router = express.Router();
 // Aplicamos Rutas con sus métodos
 router.get('/', function (req,res) {    
     // Leer cabeceras
-    console.log(req.headers);
-    // Insertamos un valor en el header
-    res.header({
-        "custom-header" : "Nuestro valor personalizado"
-    });
+    // console.log(req.headers);
+    // // Insertamos un valor en el header
+    // res.header({
+    //     "custom-header" : "Nuestro valor personalizado"
+    // });
     // res.send('Lista de mensajes');
 
 
-
-
-
     // Respuestas personalizadas del móódulo response
-    response.success(req,res, 'Lista de mensajes');
+    // response.success(req,res, 'Lista de mensajes');
+
+
+
+    // Con un Mock
+
+    controller.getMessages()
+    .then( ( messageList) => {
+        response.success(req,res,messageList,200);
+    })
+    .catch(e => {
+        response.error(req,res, 'Unexpected Error', 500, e);
+    });
 });
 
 router.post('/', function (req,res) {
