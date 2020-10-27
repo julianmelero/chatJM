@@ -1,5 +1,5 @@
 // // Creamos un mock (falsos datos)
-
+let val = require('../../keys');
 const list = [];
 
 
@@ -8,10 +8,13 @@ const model = require('./model');
 // mongodb+srv://db_user_chatjm:<JavaScript>@cluster0.yjl6t.mongodb.net/<chatjm>?retryWrites=true&w=majority
 
 db.Promise = global.Promise;
-db.connect("mongodb+srv://db_user_chatjm:JavaScript@cluster0.yjl6t.mongodb.net/<chatjm>?retryWrites=true&w=majority", 
-{useNewUrlParser: true, useUnifiedTopology: true });
 
-console.log('[db] Conectada con éxito');
+db.connect("mongodb+srv://db_user_chatjm:JavaScript@cluster0.yjl6t.mongodb.net/<chatjm>?retryWrites=true&w=majority", 
+{useNewUrlParser: true, useUnifiedTopology: true })
+
+console.log('[db]Conectado con éxito');
+
+
 
 // Añadir info
 
@@ -21,6 +24,7 @@ console.log('[db] Conectada con éxito');
     myMessage.save();
  };
 
+ // Ver info
  async function getMessage() {
     // return list;
     const messages = await model.find();
@@ -28,7 +32,19 @@ console.log('[db] Conectada con éxito');
 
 }
 
+async function updateText(id,message) {
+    
+    const foundMessage =  await model.findOne({
+        id: id
+    });    
+    foundMessage.message = message;    
+    const newMessage =  await foundMessage.save();
+    return newMessage;
+
+}
+
  module.exports = {
     add : addMessage,
     list : getMessage,
+    updateText : updateText,
 };
