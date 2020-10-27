@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-const Schema = moongose.Schema;
+const Schema = mongoose.Schema;
 
 
 // Creamos esquemas
@@ -17,6 +17,6 @@ const mySchema = new Schema({
 
 // Model
 
-const model = moongose.model('Message', mySchema);
+const model = mongoose.model('Message', mySchema);
 
 module.exports = model;
