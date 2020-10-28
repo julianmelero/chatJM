@@ -34,10 +34,12 @@ console.log('[db]Conectado con éxito');
 
 async function updateText(id,message) {
     
-    const foundMessage =  await model.findOne({
-        id: id
-    });    
+    //const foundMessage =  await model.findOne({id:id});        
+    const foundMessage =  await model.findById(id)  ;
+    
     foundMessage.message = message;    
+    
+    
     const newMessage =  await foundMessage.save();
     return newMessage;
 

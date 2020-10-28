@@ -68,10 +68,10 @@ router.patch('/:id', function (req,res) {
     // console.log(req.body.message);
     controller.updateMessage(req.params.id,req.body.message)
     .then((data) => {
-        response.success(req,res,data, 200);
+        response.success(req,res,data, '200');
     })
     .catch(e => {
-        response.error(req,res, 'Error updating', 500 ,e);
+        response.error(req,res, 'Error updating', '500' ,e);
     });
     
 });

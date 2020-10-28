@@ -12,7 +12,7 @@ function addMessage(user, message) {
         const fullMessage = {
             user : user,
             message: message,
-            date: new Date(2020,10,27),
+            date: new Date,
         };
         
         store.add(fullMessage);
@@ -31,14 +31,13 @@ function getMessages() {
 
 
 async function updateMessage(id,message) {
-    return new Promise( async (resolve,reject) => {        
+    return new Promise(  (resolve,reject) => {        
         if(!id || !message) {
-            reject('Invalid data');            
+            reject('Invalid data'); 
+            return false;           
         }
-        else{
-             const result = await store.updateText(id,message);
-             resolve(result);
-        }
+        const result =  store.updateText(id,message);
+        resolve(result);
     });
 }
 
