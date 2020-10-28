@@ -26,18 +26,30 @@ router.get('/', function (req,res) {
 
 
 
-    // Con un Mock
+    const filterMessages = req.params.user;
 
-    controller.getMessages()
-    .then( ( messageList) => {
-        response.success(req,res,messageList,200);
-    })
-    .catch(e => {
-        response.error(req,res, 'Unexpected Error', 500, e);
-    });
+    if(!filterMessages){
+
+        controller.getMessages()
+        .then( ( messageList) => {
+            response.success(req,res,messageList,200);
+        })
+        .catch(e => {
+            response.error(req,res, 'Unexpected Error', 500, e);
+        });
+    }
+    else {
+        controller.getMessages(filterMessages)
+        .then( ( messageList) => {
+            response.success(req,res,messageList,200);
+        })
+        .catch(e => {
+            response.error(req,res, 'Unexpected Error', 500, e);
+        });
+    }
 });
 
-router.post('/', function (req,res) {
+router.post('/', function (req,res) {    
     // console.log(req.body);
     // console.log(req.query);
     //res.send('Mensaje ' + req.body.mensaje /* mensaje = nombre del valor en url-encoded */ + ' añadido');
@@ -77,7 +89,7 @@ router.patch('/:id', function (req,res) {
 });
 
 router.get('/:user' , function (req,res){    
-    const filterMessages = req.params.user;
+    
     controller.getUserMessage(req.params.user)
     .then( ( messageList) => {
         response.success(req,res,messageList,200);
