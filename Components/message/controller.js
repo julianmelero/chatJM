@@ -29,6 +29,16 @@ function getMessages() {
     });
 }
 
+function getUserMessage(user) {    
+    return new Promise( (resolve,reject) => {
+        if(!user) {
+            reject('Invalid data'); 
+            return false;           
+        }
+        resolve(store.getUserMessage(user));
+    });
+}
+
 
 async function updateMessage(id,message) {
     return new Promise(  (resolve,reject) => {        
@@ -45,4 +55,5 @@ module.exports = {
     addMessage,
     getMessages,
     updateMessage,
+    getUserMessage,
 };

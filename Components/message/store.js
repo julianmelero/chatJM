@@ -8,7 +8,7 @@ const model = require('./model');
 // mongodb+srv://db_user_chatjm:<JavaScript>@cluster0.yjl6t.mongodb.net/<chatjm>?retryWrites=true&w=majority
 
 db.Promise = global.Promise;
-
+console.log(val.USER);
 db.connect("mongodb+srv://db_user_chatjm:JavaScript@cluster0.yjl6t.mongodb.net/<chatjm>?retryWrites=true&w=majority", 
 {useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -45,8 +45,15 @@ async function updateText(id,message) {
 
 }
 
+async function getUserMessage(user) {
+    console.log("Entro");    
+    const message = await model.find( { user: user});
+    return message;
+}
+
  module.exports = {
     add : addMessage,
     list : getMessage,
     updateText : updateText,
+    getUserMessage: getUserMessage,
 };
