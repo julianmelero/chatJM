@@ -25,9 +25,13 @@ console.log('[db]Conectado con éxito');
  };
 
  // Ver info
- async function getMessage() {
-    // return list;
-    const messages = await model.find();
+ async function getMessage(filterMessages) {
+    let filter = {};
+    if (filterMessages !== null) {
+        filter = {user: filterMessages};
+    }
+    
+    const messages = await model.find(filter);
     return messages;
 
 }
