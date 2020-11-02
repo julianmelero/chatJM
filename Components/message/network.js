@@ -76,6 +76,15 @@ router.patch('/:id', function (req,res) {
     
 });
 
+router.delete('/:id', function (req,res) {
+    controller.deleteMessage(req.params.id)
+    .then( () => {
+        response.success(req,res, `Usuario ${req.params.id} eliminado `, 200)       
+    })
+    .catch(e => {
+        response.error(req,res, 'Error interno' , '500', e);
+    })
+});
 router.get('/:user' , function (req,res){    
     
     controller.getUserMessage(req.params.user)
@@ -83,7 +92,7 @@ router.get('/:user' , function (req,res){
         response.success(req,res,messageList,200);
     })
     .catch(e => {
-        response.error(req,res, 'Unexpected Error', 500, e);
+        response.error(req,res, 'Unexpected Error', '500', e);
     });
 });
 

@@ -55,9 +55,18 @@ async function getUserMessage(user) {
     return message;
 }
 
+
+// Delete Message
+
+function deleteMessage(id){
+    return model.deleteOne({
+        id:id
+    });
+}
  module.exports = {
     add : addMessage,
     list : getMessage,
     updateText : updateText,
     getUserMessage: getUserMessage,
+    remove: deleteMessage,
 };
