@@ -28,7 +28,7 @@ console.log('[db]Conectado con éxito');
  async function getMessage(filterMessages) {
     let filter = {};
     if (filterMessages !== null) {
-        filter = {user: filterMessages};
+        filter = {_user: filterMessages};
     }
     
     const messages = await model.find(filter);
@@ -49,20 +49,20 @@ async function updateText(id,message) {
 
 }
 
-async function getUserMessage(user) {
-    console.log("Entro");    
-    const message = await model.find( { user: user});
+async function getUserMessage(user) {       
+    const message = await model.find( { _user: user});
     return message;
 }
 
 
 // Delete Message
 
-function deleteMessage(id){
-    return model.deleteOne({
-        id:id
+async function deleteMessage(id){
+    return await model.deleteOne({
+        _id:id
     });
 }
+
  module.exports = {
     add : addMessage,
     list : getMessage,

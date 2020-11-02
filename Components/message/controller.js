@@ -51,7 +51,7 @@ async function updateMessage(id,message) {
     });
 }
 
-function deleteMessage(id) {
+async function deleteMessage(id) {
     return new Promise ( (resolve,reject) => {
         if(!id) {
             reject('ID inválido');
