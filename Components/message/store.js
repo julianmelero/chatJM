@@ -1,5 +1,5 @@
 // // Creamos un mock (falsos datos)
-let val = require('../../keys');
+const keys = require('../../keys');
 const list = [];
 
 
@@ -8,9 +8,9 @@ const model = require('./model');
 // mongodb+srv://db_user_chatjm:<JavaScript>@cluster0.yjl6t.mongodb.net/<chatjm>?retryWrites=true&w=majority
 
 db.Promise = global.Promise;
-console.log(val.USER);
-db.connect("mongodb+srv://db_user_chatjm:JavaScript@cluster0.yjl6t.mongodb.net/<chatjm>?retryWrites=true&w=majority", 
+db.connect("mongodb+srv://"+ USER + ":"+ PASS +"@"+ CLUSTER +"/<" + BD +">?retryWrites=true&w=majority", 
 {useNewUrlParser: true, useUnifiedTopology: true })
+
 
 console.log('[db]Conectado con éxito');
 
