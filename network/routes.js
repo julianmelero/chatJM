@@ -1,3 +1,7 @@
+/*
+Este archivo contiene todas las rutas de los todos los componentes
+*/
+
 // const express = require('express');
 const message = require('../Components/message/network')
 

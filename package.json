@@ -11,10 +11,11 @@
     "telegram",
     "server"
   ],
-  "author": "Julián Melero <julian@melerohidalgo.es>",
+  "author": "Julián Melero <hola@julianmelero.com>",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.11.7"
+    "mongoose": "^5.11.7",
+    "package.json": "^2.0.1"
   }
 }
