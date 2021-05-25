@@ -26,9 +26,9 @@ router.get('/', function (req,res) {
 
 
 
-    const filterMessages = req.query.user || null;
+    const filterUsers = req.query.user || null;
   
-        controller.getMessages(filterMessages)
+        controller.getMessages(filterUsers)
         .then( ( messageList) => {
             response.success(req,res,messageList,200);
         })

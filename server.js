@@ -3,7 +3,7 @@ const express = require('express');
 
 
 // Llamamos a conexión DB
-//const db = require('./db');
+const db = require('./db');
 
 // const router = require('./Components/message/network');
 const router = require('./network/routes') ;
@@ -11,9 +11,9 @@ const router = require('./network/routes') ;
 // YA VIENE CON EXPRESS INCLUIDO :D
 //const bodyParser = require('body-parser');
 
-//const keys = require('./keys');
+const keys = require('./keys');
 
-//db("mongodb+srv://" + USER + ":" + PASS + "@" + CLUSTER + "/<" + BD +">?retryWrites=true&w=majority");
+db("mongodb+srv://" + USER + ":" + PASS + "@" + CLUSTER + "/<" + BD +">?retryWrites=true&w=majority");
 
 
 

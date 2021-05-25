@@ -5,12 +5,10 @@ const list = [];
 const { Mongoose } = require('mongoose');
 /*const db = require('mongoose');*/
 
-const db = require('../../db');
-const keys = require('../../keys');
-db("mongodb+srv://" + USER + ":" + PASS + "@" + CLUSTER + "/<" + BD +">?retryWrites=true&w=majority");
+
 
 const model = require('./model');
-console.log('[db]Conectado con éxito');
+
 
 
 
