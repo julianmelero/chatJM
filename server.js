@@ -1,5 +1,6 @@
 //Módulos
 const express = require('express');
+const cors = require('cors');
 
 
 // Llamamos a conexión DB
@@ -18,7 +19,7 @@ db("mongodb+srv://" + USER + ":" + PASS + "@" + CLUSTER + "/<" + BD +">?retryWri
 
 
 var app = express();
-
+app.use(cors());
 // Usamos los módulos
 app.use(express.json());
 //app.use(bodyParser.urlencoded( { extended: false}));
