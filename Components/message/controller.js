@@ -2,17 +2,18 @@ const store = require('./store');
 
 
 
-function addMessage(user, message) {    
+function addMessage(user, message , message2) {    
     return new Promise ((resolve, reject) => {
         if(!user || !message) {            
             console.error('[messageController] No hay usuario o mensaje');
-            return reject('Datos incorrectos');            
+            reject('Datos incorrectos');            
         }
         else {        
         const fullMessage = {
             user : user,
             message: message,
             date: new Date,
+            message2: message2,
         };
         
         store.add(fullMessage);

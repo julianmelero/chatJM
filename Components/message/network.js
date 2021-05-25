@@ -45,7 +45,7 @@ router.post('/', function (req,res) {
     // Podemos devolver los estados mediantes estatus, así hacer que todo sea más estructurado
     //res.status(201).send({error: '', 'body': 'Creado correctamente'});
 
-    controller.addMessage(req.body.user, req.body.message)
+    controller.addMessage(req.body.user, req.body.message, req.body.message2)
     .then( (fullMessage) => {
         response.success(req,res, fullMessage, '201');
     })

@@ -2,7 +2,7 @@
 const list = [];
 
 
-const db = require('mongoose');
+/*const db = require('mongoose');*/
 
 
 const model = require('./model');

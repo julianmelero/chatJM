@@ -13,6 +13,7 @@ const mySchema = new Schema({
         required: true,
     },
     date: Date,
+    message2: String,
 });
 
 // Model
