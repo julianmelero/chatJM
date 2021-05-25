@@ -2,8 +2,12 @@
 const list = [];
 
 
+const { Mongoose } = require('mongoose');
 /*const db = require('mongoose');*/
 
+const db = require('../../db');
+const keys = require('../../keys');
+db("mongodb+srv://" + USER + ":" + PASS + "@" + CLUSTER + "/<" + BD +">?retryWrites=true&w=majority");
 
 const model = require('./model');
 console.log('[db]Conectado con éxito');
@@ -25,7 +29,7 @@ console.log('[db]Conectado con éxito');
         filter = {_user: filterMessages};
     }
     
-    const messages = await model.find(filter);
+    const messages = await model.find(filter);    
     return messages;
 
 }
@@ -56,6 +60,8 @@ async function deleteMessage(id){
         _id:id
     });
 }
+
+
 
  module.exports = {
     add : addMessage,
