@@ -10,7 +10,7 @@ const response = require("../../network/response");
 const router = express.Router();
 
 const upload = multer({
-  dest: "uploads/",
+  dest: "public/files/",
 });
 
 // Aplicamos Rutas con sus métodos
@@ -47,7 +47,7 @@ router.post("/", upload.single('file'), function (req, res) {
   //res.status(201).send({error: '', 'body': 'Creado correctamente'});
 
   controller
-    .addMessage(req.body.user, req.body.message, req.body.message2)
+    .addMessage(req.body.user, req.body.message, req.body.message2, req.file)
     .then((fullMessage) => {
       response.success(req, res, fullMessage, "201");
     })
