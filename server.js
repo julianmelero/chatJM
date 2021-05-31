@@ -1,12 +1,13 @@
 //Módulos
 const express = require("express");
 var app = express();
-const server = require('http').Server(app);
+const server = require("http").Server(app);
+require('dotenv').config();
+const config = require("./config");
+
 const cors = require("cors");
 
-const socket = require('./socket');
-
-
+const socket = require("./socket");
 
 // Llamamos a conexión DB
 const db = require("./db");
@@ -17,19 +18,8 @@ const router = require("./network/routes");
 // YA VIENE CON EXPRESS INCLUIDO :D
 //const bodyParser = require('body-parser');
 
-const keys = require("./keys");
 
-db(
-  "mongodb+srv://" +
-    USER +
-    ":" +
-    PASS +
-    "@" +
-    CLUSTER +
-    "/<" +
-    BD +
-    ">?retryWrites=true&w=majority"
-);
+db(config.dbUrl);
 
 app.use(cors());
 // Usamos los módulos
@@ -46,7 +36,6 @@ router(app);
 socket.connect(server);
 // app.use('/app', express.static('public'));
 
-server.listen(3000, function () {
-    console.log("Escuchando en puerto 3000");
+server.listen(config.port, function () {
+  console.log("Escuchando en puerto " + config.host + ':' + config.port);
 });
-
